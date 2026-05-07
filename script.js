@@ -382,3 +382,9 @@ sidebarOverlay.addEventListener('click', closeMobileSidebar);
 
 /* ─── Init ─── */
 userInput.focus();
+userInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        sendMessage();
+    }
+});
