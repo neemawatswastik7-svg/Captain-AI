@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Captain AI — Jarvis Interface</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Exo+2:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Animated background grid -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <div class="app-shell">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-ring">
+            <div class="logo-core"></div>
+          </div>
+          <span class="logo-text">CAPTAIN<span class="logo-accent">AI</span></span>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <button class="new-chat-btn" id="newChatBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        New Session
+      </button>
+
+      <div class="sidebar-section-label">RECENT SESSIONS</div>
+      <ul class="chat-history" id="chatHistory">
+        <li class="history-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>General Assistant</span>
+        </li>
+        <li class="history-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>Code Analysis</span>
+        </li>
+        <li class="history-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>Research Task</span>
+        </li>
+      </ul>
+
+      <div class="sidebar-section-label">CAPABILITIES</div>
+      <ul class="capability-list">
+        <li><span class="cap-dot"></span>Natural Language</li>
+        <li><span class="cap-dot"></span>Code Generation</li>
+        <li><span class="cap-dot"></span>Data Analysis</li>
+        <li><span class="cap-dot"></span>Creative Writing</li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="status-bar">
+          <span class="status-dot"></span>
+          <span>SYSTEM ONLINE</span>
+        </div>
+        <div class="version">v2.4.1 — JARVIS CORE</div>
+      </div>
+    </aside>
+
+    <!-- ===== MAIN CHAT ===== -->
+    <main class="main-panel">
+
+      <!-- Top bar -->
+      <header class="topbar">
+        <button class="mobile-menu-btn" id="mobileMenu" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="topbar-title">
+          <div class="pulse-ring"></div>
+          CAPTAIN AI INTERFACE
+        </div>
+        <div class="topbar-meta">
+          <span class="model-badge">GPT-CORE ∞</span>
+        </div>
+      </header>
+
+      <!-- Chat messages -->
+      <div class="chat-area" id="chatArea">
+
+        <!-- Welcome state -->
+        <div class="welcome-screen" id="welcomeScreen">
+          <div class="welcome-orb">
+            <div class="orb-outer"></div>
+            <div class="orb-inner"></div>
+            <div class="orb-core">
+              <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="12" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 2"/><circle cx="20" cy="20" r="5" fill="currentColor"/></svg>
+            </div>
+          </div>
+          <h1 class="welcome-heading">Good to see you,<br /><span>Commander.</span></h1>
+          <p class="welcome-sub">I am Captain AI — your intelligent mission control. How may I assist today?</p>
+          <div class="suggestion-grid">
+            <button class="suggestion-card" data-prompt="Explain quantum computing in simple terms">
+              <div class="sc-icon">⚛</div>
+              <div class="sc-text">Explain quantum computing simply</div>
+            </button>
+            <button class="suggestion-card" data-prompt="Write a Python function to sort a list of objects by multiple fields">
+              <div class="sc-icon">⌨</div>
+              <div class="sc-text">Write Python sorting code</div>
+            </button>
+            <button class="suggestion-card" data-prompt="What are the key trends shaping AI in 2025?">
+              <div class="sc-icon">◈</div>
+              <div class="sc-text">AI trends in 2025</div>
+            </button>
+            <button class="suggestion-card" data-prompt="Help me draft a professional email declining a meeting politely">
+              <div class="sc-icon">✉</div>
+              <div class="sc-text">Draft a professional email</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Messages will be injected here -->
+        <div class="messages-container" id="messagesContainer"></div>
+
+      </div>
+
+      <!-- Input bar -->
+      <div class="input-bar">
+        <div class="input-wrap">
+          <textarea
+            id="userInput"
+            class="user-input"
+            placeholder="Transmit your query to Captain AI…"
+            rows="1"
+            autocomplete="off"
+            spellcheck="false"
+          ></textarea>
+          <button class="send-btn" id="sendBtn" aria-label="Send message">
+            <svg class="send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+        <p class="input-hint">Captain AI may produce errors. Verify critical information.</p>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Sidebar overlay for mobile -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
