@@ -8,7 +8,7 @@
    🔑  STEP 1 — PASTE YOUR OPENROUTER API KEY HERE
        Get one free at: https://openrouter.ai/keys
    ────────────────────────────────────────────────────────── */
-const API_KEY = "YOUR_API_KEY"
+const OPENROUTER_API_KEY = ""
 
 
 /* ──────────────────────────────────────────────────────────
